@@ -1,0 +1,32 @@
+/* === 최소 필수 스타일 === */
+.section {
+    padding: 50px 0;
+}
+.section_gray {
+    background: #f5f5f5;
+}
+.l_wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-list {
+    margin: 0;
+}
+
+/* slick 기본 요구사항 */
+.slick-slide {
+    padding: 0 10px;
+}
+.gallery-item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.gallery-box {
+    display: block;
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}

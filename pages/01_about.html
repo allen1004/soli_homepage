@@ -8,51 +8,17 @@
     <meta property="og:description" content="가치를 추구하는 기업 - 혁식적인 기술로 함께합니다.">
     <title>솔리머 주식회사</title>
 
-    <link href="./css/font.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/common.css" type="text/css" media="all">
-    <link rel="stylesheet" href="./css/slick.css" type="text/css" media="all">
-    <link rel="stylesheet" href="./css/home.css" type="text/css" media="all">
-    <script type="text/javascript" src="./js/lazyload.min.js" id="vc-lazyload-js"></script>
-    <script type="text/javascript" src="./js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="./js/slick.js" id="vc-slick-js"></script>
-    <script type="text/javascript" src="./js/common.js" id="vc-common-js"></script>
+    <link href="../css/font.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/common.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../css/slick.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../css/home.css" type="text/css" media="all">
+    <script type="text/javascript" src="../js/lazyload.min.js" id="vc-lazyload-js"></script>
+    <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/slick.js" id="vc-slick-js"></script>
+    <script type="text/javascript" src="../js/common.js" id="vc-common-js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
-    <style>
-        .section {
-            padding: 50px 0;
-        }
-        .section_gray {
-            background: #f5f5f5;
-        }
-        .l_wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-list {
-            margin: 0;
-        }
-
-        /* slick 기본 요구사항 */
-        .slick-slide {
-            padding: 0 10px;
-        }
-        .gallery-item {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .gallery-box {
-            display: block;
-            padding: 30px;
-            text-align: center;
-            text-decoration: none;
-            color: #000;
-        }
-    </style>
 </head>
 
 <body class="production" id="top">
@@ -63,8 +29,8 @@
         </div>
         <div class="l_wrapper">
             <div class="header-inside">
-                <a class="header-logo" href="./index.html">
-                    <img src="./image/logo.png">
+                <a class="header-logo" href="../index.html">
+                    <img src="../image/logo.png">
                 </a>
 
                 <!-- 메뉴 시작 -->
@@ -76,10 +42,10 @@
                                 <div class="header-drop header-drop-0">
                                     <ul class="header-drop-inside header-drop-0-inside">
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./pages/01_about.html" class="drop-anchor drop-anchor-1"><h3>회사소개</h3></a>
+                                            <a href="./01_about.html" class="drop-anchor drop-anchor-1"><h3>회사소개</h3></a>
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./company/02_depart.html" class="drop-anchor drop-anchor-1"><h3>조직구조</h3></a>
+                                            <a href="./02_depart.html" class="drop-anchor drop-anchor-1"><h3>조직구조</h3></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -206,13 +172,13 @@
                 <nav class="plate-nav">
                     <ul id="menu-global-menu-1" class="menu">
                         <li class="plate-nav-item plate-nav-item-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-                            <a href="./pages/about.html" class="plate-nav-anchor plate-nav-anchor_none"><h2>회사소개</h2></a>
+                            <a href="./pages/01_about.html" class="plate-nav-anchor plate-nav-anchor_none"><h2>회사소개</h2></a>
                             <ul class="plate-nav-sub plate-nav-sub-0">
                                 <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-page is_ko">
-                                    <a href="./pages/about.html" class="plate-nav-anchor"><h3>회사소개</h3></a>
+                                    <a href="./pages/01_about.html" class="plate-nav-anchor"><h3>회사소개</h3></a>
                                 </li>
                                 <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-page">
-                                    <a href="./pages/depart.html" class="plate-nav-anchor"><h3>조직구조</h3></a>
+                                    <a href="./about-us/wi-lab/b" class="plate-nav-anchor"><h3>조직구조</h3></a>
                                 </li>
                             </ul>
                         </li>
@@ -264,35 +230,44 @@
     </div>
     <!-- 반응형 스마트 폰  끝-->
 
-        
-    <!-- 메인 인트로 -->
-    <section class="cover cover_black cover_fullpage">
-        <div class="cover-background">
-            <!-- <video class="cover-background-video lazy lazy-loaded" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" data-ll-status="loaded" 
-                src="https://wizcore.co.kr/wp-content/uploads/sites/4/2020/10/video.mp4"> 
-            </video> -->
-            <img class="cover-background-video" src="./image/bg_01.png">
-        </div>
+
+
+
+
+    <section class="cover">
+        <div class="cover-background lazy lazy-loaded" data-ll-status="loaded" style="background-image: url(&quot;https://wizcore.co.kr/wp-content/uploads/2020/08/product-cover-1.png&quot;);"></div>
         <div class="cover-inside">
             <div class="l_wrapper">
-                <div class="front">
-                    <div class="front-title is_init">
-                        <h1>가치를 추구하는 기업</h1>
-                        <p>친환경 반도체 분야의 혁신적인 기술로 함께하겠습니다.</p>
-                    </div>
+                <div class="cover-title">
+                    <h1>회사소개</h1>
+                    <p>기업의 경쟁력을 높이는 가장 확실한 솔루션121</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- 메인 인트로 끝-->
+
+
+    <!-- 서브 중간 메뉴 -->
+    <nav class="indicator ">
+        <div class="l_wrapper">
+            <div class="indicator-inside" style="align-items: center;">
+                <div style="width: 30%;"></div>
+                <div class="indicator-item">
+                    <button type="button">회사소개</button>
+                </div>
+                <div class="indicator-item">
+                    <button type="button" onclick="location.href='./02_depart.html'">조직구성</button>
+                </div>
+                <div style="width: 30%;"></div>
+            </div>
+        </div>
+    </nav>
+    <!-- 서브 중간 메뉴 끝 -->
 
 
 
-
-    
-    <!-- 전체 페이지 위로 가기 적용 -->
     <div class="anchor">
-        <div class="anchor-inside is_top">
+        <div class="anchor-inside">
             <div class="l_wrapper">
                 <div class="anchor-contents">
                     <a class="anchor-arrow" href="#top"><span class="hide">맨 위로</span></a>
@@ -300,241 +275,63 @@
             </div>
         </div>
 
-        
-        <!-- 두번째 페이지 -->
-        <section id="contents" class="section section_centered">
-            <div class="l_wrapper">
-                <div class="section-title">
-                    <h1>사업 소개 자료    추가 필요</h1>
-                    <p>자동화설비, 전기전자부품, 친환경 반도체, IoT, S/W 솔루션<br>
-                        제공합니다.<br>
-                    </p>
-                    <p><br>궁금한 점이 있으시면 언제든지 문의해주세요.</p>
-                </div>
-                <div class="section-main section-main_mobile_reverse">
-                    <div class="section-controls">
-                        <a class="button" href="">
-                            VIEW MORE
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- 두번째 페이지 끝 -->
-
-        <!-- 세번째 페이지 -->
-        <section class="section section_blue section_covered">
+        <div class="anchor-clip">
             <div class="l_wrapper">
                 <div class="showcase">
-                    <img class="lazy showcase-logo lazy-loaded" data-ll-status="loaded" src="이미지"> 
                     <div class="showcase-title">
-                        <h1>음식물 처리기, 혁신상품</h1>
-                        <p>기존에는 </p>
+                        <h1>회사소개</h1>
+                        <p>
+                            솔리머는 기업의 경쟁력 향상을 위하여 검증된 Practice를 기반으로 H/W, S/W 솔루션을 제공하는 회사입니다.
+                            <br><br>저희 솔리머 홈페이지를 방문하여 주신 여러분을 진심으로 환영합니다.
+                            <br>솔리머는 Global 최고 수준의 IT 시스템을 가진 삼성에서의 경험과 노하우를 활용하여 기업들이 보다 빠르고 
+                            효율적으로 IT 경쟁력을 확보할 수 있도록 지원하기 위하여 2017년에 설립하였으며 2022년 신설법인으로 통합하였습니다.
+                            <br>제조기업과 물류기업의 Smart화를 위한 컨설팅, 시스템 구축 및 운영, 솔루션 공급, 자동화를 위한 Device 설계로부터 제작 및 유지관리에 이르는 통합 서비스를 제공합니다.
+                            <br>혁신을 위한 모든 것을 결합하여 새로운 세상을 향해 나아가는 솔리머에 여러분의 많은 관심과 성원을 부탁드립니다.
+                            <br><br>감사합니다. 
+                        </p>
                     </div>
-                    <div class="section-controls">
-                        <a class="button button_invert" href="">VIEW MORE</a>
-                    </div>
-                    <div class="showcase-cover showcase-cover_nexpom">
-                        <div class="showcase-cover-inside">
-                            <img class="showcase-cover-image lazy lazy_up" data-src="이미지.png">
-                        </div>
-                    </div>
-                    <img class="lazy showcase-background" data-src="이미지.png"> 
                 </div>
+                <div style="padding-bottom: 50px">
+                </div>
+
             </div>
-        </section>
-        <!-- 세번째 페이지 끝-->
-
-        <!-- 네번째 페이지 -->
-        <div class="solution">
-            <section class="solution-section">
-                <div class="l_wrapper">
-                    <div class="solution-section-title">
-                        <h1>
-                            <span class="is_en">S/W</span>
-                            구성 솔루션
-                        </h1>
-                        <p>우리 회사에 적합한 솔루션을 지금 확인하세요.</p>
-                    </div>
-                    <div class="solution-contents">
-
-
-                        <div class="booth-grid">
-                            <div class="booth-grid-item booth-grid-item_4_12 booth-grid-item_large_auto booth-grid-item_mobile_6_12">
-                                <a class="solution-item" href="">
-                                    <div class="solution-item-cover">
-                                        <img class="lazy" data-src="이미지.png">
-                                    </div>
-                                    <div class="solution-item-contents">
-                                        <h2>MES</h2>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="booth-grid-item booth-grid-item_4_12 booth-grid-item_large_auto booth-grid-item_mobile_6_12">
-                                <a class="solution-item" href="">
-                                    <div class="solution-item-cover">
-                                        <img class="lazy" data-src="이미지.png">
-                                    </div>
-                                    <div class="solution-item-contents">
-                                        <h2>Smart HACCP</h2>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </section>
         </div>
-        <!-- 네번째 페이지 끝-->
-
-
-        <!-- 다섯번째 페이지 -->
-        <section class="section section_gray">
-            <div class="l_wrapper">
-                <div class="section-header">
-                    <div class="section-header-line">
-                        <h1>H/W, S/W 분야</h1>
-                        <div id="it" class="arrows">
-                            <button class="arrows-item arrows-item_prev">Prev</button>
-                            <button class="arrows-item arrows-item_next">Next</button>
-                        </div>
-                    </div>
-                    <p>솔리머에서 만날 수 있는 H/W, S/W 솔루션을 확인하세요.</p>
-                </div>
-                <div class="section-contents">
-                    <div class="gallery is_init">
-                        <div class="gallery-list">
-                            
-                                    <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" role="tabpanel" id="slick-slide10" style="width: 399px;">
-                                        <div>
-                                            <div class="gallery-item" style="width: 100%; display: inline-block;">
-                                                <a class="gallery-box" href="" tabindex="0">
-                                                    <img class="gallery-box-overlay" src="이미지">
-                                                    <div class="gallery-box-cover">
-                                                        <img src="./이미지.png">
-                                                    </div>
-                                                    <div class="gallery-box-contents">
-                                                        <h2>HW</h2>
-                                                        <p>소개자료<br> 소개자료</p>
-                                                    </div>
-                                                    <span class="gallery-arrow"></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-  
-                                    <div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide14" style="width: 399px;">
-                                        <div>
-                                            <div class="gallery-item" style="width: 100%; display: inline-block;">
-                                                <a class="gallery-box" href="" tabindex="1">
-                                                    <img class="gallery-box-overlay" src="./files/image/overlay-bg-4.png">
-                                                    <div class="gallery-box-cover">
-                                                        <img src="./files/product-logos_04.png">
-                                                    </div>
-                                                    <div class="gallery-box-contents">
-                                                        <h2>S/W</h2>
-                                                        <p>소개자료<br> 소개자료2</p>
-                                                    </div>
-                                                    <span class="gallery-arrow"></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- 다섯번째 페이지 끝-->
-
-
-        <!-- 여섯번째 페이지 -->
-        <section class="section section_underline">
-            <div class="l_wrapper">
-                <div class="section-header">
-                    <div class="section-header-line">
-                        <h1>고객 & 파트너</h1>
-                    </div>
-                    <p>솔리머와 함께합니다.</p>
-                </div>
-                <div class="section-contents">
-                </div>
-                <div class="section-footer section-footer_centered show_mobile">
-                    <a class="button" href="http://wwww.newfocus-lab.com">VIEW MORE</a>
-                </div>
-            </div>
-        </section>
-        <!-- 여섯번째 페이지 끝-->
+        <!--anchor clip end -->
     </div>
-    <!-- 전체 페이지 위로 가기 적용 끝 -->
-
+ 
     <footer class="footer">
         <div class="footer-information">
             <div class="l_wrapper">
                 <div class="footer-section">
                     <a class="footer-logo">
                         <span class="footer-logo-contents">
-                            <img src="./image/logo.png">
+                            <img src="../image/logo.png">
                         </span>
                     </a>
                     <div class="footer-contact">
-                        <h2>솔리머주식회사</h2>
+                        <h2>위즈코어주식회사</h2>
                         <ul>
                             <li>
                                 <strong class="hide">ADDRESS.</strong>
-                                <span>인천광역시 서구 건지로 98-79, 3층(가좌동)</span>
+                                <span>서울시 성동구 아차산로 17길 49, 성수생각공장 데시앙플렉스 1505~8호 / 1406호</span>
                             </li>
                             <li class="is_break">
                                 <strong>TEL.</strong> 
-                                <span>02. 1111. 1111</span>
+                                <span>02. 3273. 2608</span>
                             </li>
                             <li>
                                 <strong>FAX.</strong> 
-                                <span>02. 1111. 111</span>
+                                <span>02. 3273. 2609</span>
                             </li>
-                            <li><strong>대표 :</strong><span>권영준</span></li>
-                            <li><strong>사업자등록번호 :</strong><span>111-88-11111</span></li>
+                            <li><strong>대표 :</strong><span>박덕근</span></li>
+                            <li><strong>사업자등록번호 :</strong><span>105-87-41568</span></li>
                         </ul>
-                        <address>Copyright 2025 솔리머. All Rights Reserved.</address>
+                        <address>Copyright 2020 WIZCORE. All Rights Reserved.</address>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script type="text/javascript"> 
-
-        function changeLanguage(obj) {
-            alert(obj);
-        }
-
-        $(function () {
-            $('.gallery-list').slick({
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                arrows: true,
-                dots: false,
-                infinite: true,
-
-                prevArrow: $('.arrows-item_prev'),
-                nextArrow: $('.arrows-item_next'),
-
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
 </body>
 </html>

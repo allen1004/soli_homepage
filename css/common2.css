@@ -1,0 +1,46 @@
+:root.is_win .gallery .slick-slide {
+    margin-right: 1px;
+}
+
+
+
+/* Layouts */
+.l_wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+}
+
+
+
+@media ( min-width: 1160px ) {
+    body {
+        font-size: 1.6rem;
+    }
+
+    .l_wrapper {
+        padding: 0 60px;
+    }
+}
+
+
+@media ( max-width: 640px ) {
+
+    .l_col_mobile_12_12 { width: 100%; }
+    .l_col_mobile_11_12 { width: 91.66666667%; }
+    .l_col_mobile_10_12 { width: 83.33333333%; }
+    .l_col_mobile_9_12  { width: 75%; }
+    .l_col_mobile_8_12  { width: 66.66666667%; }
+    .l_col_mobile_7_12  { width: 58.33333333%; }
+    .l_col_mobile_6_12  { width: 50%; }
+    .l_col_mobile_5_12  { width: 41.66666667%; }
+    .l_col_mobile_4_12  { width: 33.33333333%; }
+    .l_col_mobile_3_12  { width: 25%; }
+    .l_col_mobile_2_12  { width: 16.66666667%; }
+    .l_col_mobile_1_12  { width: 8.33333333%; }
+
+    .l_wrapper {
+        padding: 0 20px;
+    }
+}
