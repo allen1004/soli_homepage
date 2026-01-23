@@ -1063,8 +1063,8 @@ body {
     color: #555;
     padding: 0 45px 0 20px;
     box-sizing: border-box;
-    border-right: 0px solid #eee;
-    border-right: 0px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1072,7 +1072,7 @@ body {
 }
 
 .indicator-item button::after {
-    content: ' ';
+    content: '        ';
     position: absolute;
     left: 20px;
     top: 50%;
@@ -1080,7 +1080,6 @@ body {
     width: 8px;
     height: 4px;
     background-size: cover;
-    background-color: #ff0000;
 }
 
 .indicator-item-sub {
