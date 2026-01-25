@@ -1,466 +1,108 @@
 <!DOCTYPE html>
-<html lang="ko-KR" class="is_win">
+<html lang="ko">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=11">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="솔리머 주식회사">
-    <meta property="og:description" content="가치를 추구하는 기업 - 혁식적인 기술로 함께합니다.">
-    <title>솔리머 주식회사</title>
-
-    <link href="../css/font.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/common.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../css/slick.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../css/home.css" type="text/css" media="all">
-    <script type="text/javascript" src="../js/lazyload.min.js" id="vc-lazyload-js"></script>
-    <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="../js/slick.js" id="vc-slick-js"></script>
-    <script type="text/javascript" src="../js/common.js" id="vc-common-js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-    /* 조직도 전체 */
-    .org-chart {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        box-sizing: border-box;
-    }
+        /* 기본 배경 설정 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f7f9;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
 
-    /* 트리 구조 */
-    .org-chart ul {
-        padding-top: 20px;
-        position: relative;
-        display: inline-flex;
-        justify-content: center;
-        width: max-content;
-        max-width: 100%;
-    }
+        /* 반응형 카드 컨테이너 */
+        .biz-card {
+            width: 90%; /* 모바일에서 좌우 여백 */
+            max-width: 400px; /* PC 최대 너비 */
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
 
-    .org-chart li {
-        list-style: none;
-        text-align: center;
-        padding: 20px 10px 0;
-        position: relative;
-    }
+        /* 상단 컬러 바 */
+        .biz-card-header {
+            height: 10px;
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+        }
 
-    /* 연결선 (가로) */
-    .org-chart li::before,
-    .org-chart li::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        width: 50%;
-        height: 20px;
-        border-top: 2px solid #ccc;
-    }
+        .biz-card-body {
+            padding: 30px;
+        }
 
-    .org-chart li::before {
-        left: 0;
-        border-right: 2px solid #ccc;
-    }
+        .biz-profile {
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-    .org-chart li::after {
-        right: 0;
-        border-left: 2px solid #ccc;
-    }
+        .biz-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2d3436;
+            margin: 0;
+        }
 
-    /* 첫/마지막 예외 처리 */
-    .org-chart li:first-child::before,
-    .org-chart li:last-child::after {
-        border: none;
-    }
+        .biz-title {
+            font-size: 0.9rem;
+            color: #007bff;
+            font-weight: 600;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
 
-    .org-chart li:only-child::before,
-    .org-chart li:only-child::after {
-        display: none;
-    }
+        /* 정보 리스트 스타일 */
+        .biz-list {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
 
-    /* 세로선 */
-    .org-chart ul ul::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        height: 20px;
-        border-left: 2px solid #ccc;
-    }
+        .biz-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #636e72;
+            text-decoration: none;
+        }
 
-    /* 박스 디자인 */
-    .org-box {
-        background: #ffffff;
-        border: 2px solid #4a6cf7;
-        padding: 12px 18px;
-        border-radius: 8px;
-        font-size: 14px;
-        width: 120px;
-         margin: 0 auto;   /* 박스 자체 가운데 */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
+        .biz-item span {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
 
-    /* 직급 강조 */
-    .org-box.ceo {
-        background: #4a6cf7;
-        color: #fff;
-        font-weight: bold;
-    }
-
-    .org-box.head {
-        border-color: #00a8ff;
-    }
-
-    .org-box.team {
-        border-color: #aaa;
-    }
-    </style>    
+        /* 반응형 텍스트 조정 (작은 화면) */
+        @media (max-width: 320px) {
+            .biz-name { font-size: 1.2rem; }
+            .biz-card-body { padding: 20px; }
+        }
+    </style>
 </head>
+<body>
 
-<body class="production" id="top">
-
-    <header class="header" style="height: 80px;">
-        <div class="header-background">
-            <div class="header-indicator" style="opacity: 0; left: 0.0883841px; width: 100.002px;"></div>
-        </div>
-        <div class="l_wrapper">
-            <div class="header-inside">
-                <a class="header-logo" href="../index.html">
-                    <img src="../image/logo.png">
+    <div class="biz-card">
+        <div class="biz-card-header"></div>
+        <div class="biz-card-body">
+            <div class="biz-profile">
+                <h1 class="biz-name">홍길동</h1>
+                <div class="biz-title">UX/UI DESIGNER</div>
+            </div>
+            
+            <div class="biz-list">
+                <a href="tel:01012345678" class="biz-item">
+                    <span>📱</span> 010-1234-5678
                 </a>
-
-                <!-- 메뉴 시작 -->
-                <nav class="header-menu">
-                    <div class="header-menu-list">
-                        <ul id="menu-global-menu" class="menu">
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children drop drop-0">
-                                <a href="./pages/01_about.html" class="drop-anchor drop-anchor-0"><h2>회사소개</h2></a>
-                                <div class="header-drop header-drop-0">
-                                    <ul class="header-drop-inside header-drop-0-inside">
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./01_about.html" class="drop-anchor drop-anchor-1"><h3>회사소개</h3></a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./02_depart.html" class="drop-anchor drop-anchor-1"><h3>조직구조</h3></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children drop drop-0">
-                                <a href="./product/" class="drop-anchor drop-anchor-0"><h2>카테고리소개</h2></a>
-                                <div class="header-drop header-drop-0"><ul class="header-drop-inside header-drop-0-inside">
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children drop drop-1 is_ko">
-                                        <a href="./product/smart-factory/" class="drop-anchor drop-anchor-1"><h3>제품소개</h3></a>
-                                        <div class="header-drop header-drop-1">
-                                            <ul class="header-drop-inside header-drop-1-inside">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children drop drop-2">
-                                                    <a href="./product/smart-factory/nexpom/" class="drop-anchor drop-anchor-2">음식물처리기</a>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-product drop drop-2">
-                                                    <a href="./product/smart-factory/nexpomer/" class="drop-anchor drop-anchor-2">혁신상품</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children drop drop-1">
-                                        <a href="https://wizcore.co.kr/product/global-it/" class="drop-anchor drop-anchor-1"><h3>부품소개</h3></a>
-                                        <div class="header-drop header-drop-1"><ul class="header-drop-inside header-drop-1-inside">
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-product drop drop-2">
-                                                <a href="./product/global-it/pure-storage/" class="drop-anchor drop-anchor-2">RF CABLE</a>
-                                            </li>
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-product drop drop-2">
-                                                <a href="./product/global-it/nutanix/" class="drop-anchor drop-anchor-2">SMD SOLAR CELL</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </div>
-                            </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children drop drop-0">
-                                <a href="./contact-us/" class="drop-anchor drop-anchor-0"><h2>R&D-솔루션</h2></a>
-                                <div class="header-drop header-drop-0" style="display: none;">
-                                    <ul class="header-drop-inside header-drop-0-inside">
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./contact-us/location/" class="drop-anchor drop-anchor-1"><h3>H/W 자동화설비</h3></a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./contact-us/form/" class="drop-anchor drop-anchor-1"><h3>전기부품설계</h3></a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./contact-us/form/" class="drop-anchor drop-anchor-1"><h3>S/W 솔루션</h3></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-0">
-                                <a href="./use-case/" class="drop-anchor drop-anchor-0"><h2>소식</h2></a>
-                            </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children drop drop-0">
-                                <a href="./contact-us/" class="drop-anchor drop-anchor-0"><h2>CONTACT US</h2></a>
-                                <div class="header-drop header-drop-0" style="display: none;">
-                                    <ul class="header-drop-inside header-drop-0-inside">
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./contact-us/location/" class="drop-anchor drop-anchor-1"><h3>찾아오시는길</h3></a>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page drop drop-1 is_ko">
-                                            <a href="./contact-us/form/" class="drop-anchor drop-anchor-1"><h3>문의하기</h3></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- 메뉴 끝 -->
-
-
-                <div class="header-portal">
-                    <!-- <a class="header-button" href="http://www.newfocus-lab.com" target="_blank">PARTNER PORTAL</a> -->
-                    <div class="header-switch">
-                        <button id="language-switch" class="header-switch-button" type="button">
-                            <span class="fi fi-kr"></span> KOR
-                        </button>
-
-                        <nav class="header-select" style="display: none;">
-                            <a href="#" class="header-select-option" data-lang="KOR" data-flag="kr">KOR <span class="fi fi-kr"></span></a>
-                            <a href="#" class="header-select-option" data-lang="ENG" data-flag="us">ENG <span class="fi fi-us"></span></a>
-                            <a href="#" class="header-select-option" data-lang="CHN" data-flag="cn">CHN <span class="fi fi-cn"></span></a>
-                        </nav>
-                    </div>
-                </div>
-                <aside class="header-aside">
-                    <button id="menu-open" class="header-burger" type="button">
-                        <i class="header-burger-icon"></i>
-                        <span class="hide">MENU</span>
-                    </button>
-                </aside>
-            </div>
-        </div>
-    </header>
-
-
-    <!-- 반응형 스마트 폰-->
-    <div class="plate">
-        <div class="plate-background"></div>
-        <div class="plate-inside">
-            <div class="plate-header">
-                <h1>전체메뉴</h1>
-                <div class="plate-portal">
-                    <a class="header-logo" href="./index.html">
-                        <img src="./image/logo.png">
-                    </a>
-                    <div class="switch">
-                        <button id="language" class="switch-button" type="button">
-                            <span class="fi fi-kr"></span> KOR
-                        </button>
-
-                        <nav class="switch-select" style="display:none;">
-                            <a href="#" class="switch-select-option" data-lang="KOR" data-flag="kr">KOR <span class="fi fi-kr"></span></a>
-                            <a href="#" class="switch-select-option" data-lang="ENG" data-flag="us">ENG <span class="fi fi-us"></span></a>
-                            <a href="#" class="switch-select-option" data-lang="CHN" data-flag="cn">CHN <span class="fi fi-cn"></span></a>
-                        </nav>
-                    </div>
-                </div>
-                <button class="plate-close" type="button">메뉴닫기</button>
-            </div>
-
-            <div class="plate-contents">
-                <nav class="plate-nav">
-                    <ul id="menu-global-menu-1" class="menu">
-                        <li class="plate-nav-item plate-nav-item-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-                            <a href="./pages/01_about.html" class="plate-nav-anchor plate-nav-anchor_none"><h2>회사소개</h2></a>
-                            <ul class="plate-nav-sub plate-nav-sub-0">
-                                <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-page is_ko">
-                                    <a href="./pages/01_about.html" class="plate-nav-anchor"><h3>회사소개</h3></a>
-                                </li>
-                                <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-page">
-                                    <a href="./about-us/wi-lab/b" class="plate-nav-anchor"><h3>조직구조</h3></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="plate-nav-item plate-nav-item-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-                            <a href="./product/" class="plate-nav-anchor plate-nav-anchor_none"><h2>카테고리소개</h2></a>
-                            <ul class="plate-nav-sub plate-nav-sub-0">
-                                <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children is_ko">
-                                    <a href="./smart-factory/" class="plate-nav-anchor plate-nav-anchor_none"><h3>제품소개</h3></a>
-                                    <ul class="plate-nav-sub plate-nav-sub-1">
-                                        <li class="plate-nav-item plate-nav-item-2 menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children">
-                                            <a href="./product/smart-factory/nexpom/" class="plate-nav-anchor plate-nav-anchor_none">음식물처리기</a>
-                                        </li>
-                                        <li class="plate-nav-item plate-nav-item-2 menu-item menu-item-type-post_type menu-item-object-product">
-                                            <a href="./product/smart-factory/nexpomer/" class="plate-nav-anchor">혁신상품</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children">
-                                    <a href="./product/global-it/" class="plate-nav-anchor plate-nav-anchor_none"><h3>부품소개</h3></a>
-                                    <ul class="plate-nav-sub plate-nav-sub-1">
-                                        <li class="plate-nav-item plate-nav-item-2 menu-item menu-item-type-post_type menu-item-object-product">
-                                            <a href="./product/global-it/pure-storage/" class="plate-nav-anchor">RF CABLE</a>
-                                        </li>
-                                        <li class="plate-nav-item plate-nav-item-2 menu-item menu-item-type-post_type menu-item-object-product">
-                                            <a href="./product/global-it/pure-storage/" class="plate-nav-anchor">SMD SOLAR CELL</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="plate-nav-item plate-nav-item-0 menu-item menu-item-type-post_type menu-item-object-page">
-                            <a href="./use-case/" class="plate-nav-anchor"><h2>소식</h2></a>
-                        </li>
-                        <li class="plate-nav-item plate-nav-item-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-                            <a href="./contact-us/" class="plate-nav-anchor plate-nav-anchor_none"><h2>CONTACT US</h2></a>
-                            <ul class="plate-nav-sub plate-nav-sub-0">
-                                <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-page is_ko">
-                                    <a href="./contact-us/location/" class="plate-nav-anchor"><h3>찾아오시는길</h3></a>
-                                </li>
-                                <li class="plate-nav-item plate-nav-item-1 menu-item menu-item-type-post_type menu-item-object-page is_ko">
-                                    <a href="./contact-us/form/" class="plate-nav-anchor"><h3>문의하기</h3></a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                <a href="mailto:hello@brand.com" class="biz-item">
+                    <span>📧</span> hello@brand.com
+                </a>
             </div>
         </div>
     </div>
-    <!-- 반응형 스마트 폰  끝-->
-
-
-
-
-
-    <section class="cover">
-        <div class="cover-background lazy lazy-loaded" data-ll-status="loaded" style="background-image: url(&quot; cover-1.png&quot;);"></div>
-        <div class="cover-inside">
-            <div class="l_wrapper">
-                <div class="cover-title">
-                    <h1>회사소개</h1>
-                    <p>기업의 경쟁력을 높이는 가장 확실한 솔루션121</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- 서브 중간 메뉴 -->
-    <nav class="indicator ">
-        <div class="l_wrapper">
-            <div class="indicator-inside" style="align-items: center;">
-                <div style="width: 30%;"></div>
-                <div class="indicator-item">
-                    <button type="button" onclick="location.href='./01_about.html'">회사소개</button>
-                </div>
-                <div class="indicator-item">
-                    <button type="button" onclick="location.href='./02_depart.html'">조직구성</button>
-                </div>
-                <div style="width: 30%;"></div>
-            </div>
-        </div>
-    </nav>
-    <!-- 서브 중간 메뉴 끝 -->
-
-
-
-    <div class="anchor">
-        <div class="anchor-inside">
-            <div class="l_wrapper">
-                <div class="anchor-contents">
-                    <a class="anchor-arrow" href="#top"><span class="hide">맨 위로</span></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="anchor-clip">
-            <div class="l_wrapper">
-                <div class="showcase">
-                    <div class="showcase-title">
-                        <h1>조직구성</h1>
-
-                        
-<div class="org-chart">
-    <ul>
-        <li>
-            <div class="org-box ceo">대표이사</div>
-
-            <ul>
-                <li>
-                    <div class="org-box head">경영지원부</div>
-                    <ul>
-                        <li><div class="org-box team">인사팀</div></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <div class="org-box head">R&D 사업부</div>
-                    <ul>
-                        <li><div class="org-box team">개발팀</div></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <div class="org-box head">솔루션 사업부</div>
-                    <ul>
-                        <li><div class="org-box team">국내영업팀</div></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="org-box head">기업부설연구소</div>
-                    <ul>
-                        <li><div class="org-box team">국내영업팀</div></li>
-                    </ul>
-                </li>
-            </ul>
-
-        </li>
-    </ul>
-</div>
-                    </div>
-                </div>
-                <div style="padding-bottom: 50px">
-                </div>
-
-            </div>
-        </div>
-        <!--anchor clip end -->
-    </div>
- 
-    <footer class="footer">
-        <div class="footer-information">
-            <div class="l_wrapper">
-                <div class="footer-section">
-                    <a class="footer-logo">
-                        <span class="footer-logo-contents">
-                            <img src="../image/logo.png">
-                        </span>
-                    </a>
-                    <div class="footer-contact">
-                        <h2>위즈코어주식회사</h2>
-                        <ul>
-                            <li>
-                                <strong class="hide">ADDRESS.</strong>
-                                <span>서울시 성동구 아차산로 17길 49, 성수생각공장 데시앙플렉스 1505~8호 / 1406호</span>
-                            </li>
-                            <li class="is_break">
-                                <strong>TEL.</strong> 
-                                <span>02. 3273. 2608</span>
-                            </li>
-                            <li>
-                                <strong>FAX.</strong> 
-                                <span>02. 3273. 2609</span>
-                            </li>
-                            <li><strong>대표 :</strong><span>박덕근</span></li>
-                            <li><strong>사업자등록번호 :</strong><span>105-87-41568</span></li>
-                        </ul>
-                        <address>Copyright 2020 WIZCORE. All Rights Reserved.</address>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
 </body>
 </html>

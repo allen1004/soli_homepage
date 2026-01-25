@@ -516,7 +516,7 @@ body {
 .l_wrapper {
     max-width: 1160px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 10px;
     position: relative;
 }
 
@@ -1032,6 +1032,7 @@ body {
 }
 
 .indicator-inside {
+    height: 50px;
     display: flex;
 }
 
@@ -1045,11 +1046,6 @@ body {
     font-weight: bold;
 }
 
-/* :root[lang="zh-CN"] .indicator-item-sub li.is_ko a,
-:root[lang="zh-CN"] .indicator-item.is_ko {
-    font-weight: 500;
-} */
-
 .indicator-item:first-child {
     border-left: 1px solid #eee;
     border-left: 1px solid #ddd;
@@ -1057,7 +1053,7 @@ body {
 
 .indicator-item button {
     text-align: center;
-    height: 60px;
+    height: 50px;
     font-size: 1.4rem;
     width: 100%;
     color: #555;
@@ -1080,43 +1076,6 @@ body {
     width: 8px;
     height: 4px;
     background-size: cover;
-}
-
-.indicator-item-sub {
-    z-index: 8888;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    background-color: white;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 60px;
-    margin-left: -1px;
-    border: 1px solid #eee;
-    padding: 7px 0;
-    font-size: 1.4rem;
-    color: #555;
-    line-height: 1;
-    display: none;
-}
-
-.indicator-item-sub.is_active {
-    display: block;
-}
-
-.indicator-item-sub li a {
-    display: block;
-    padding: 10px 20px;
-}
-
-.indicator-item-sub li.is_ko a {
-    font-family: 'NanumSquare', sans-serif;
-    font-weight: bold;
-}
-
-.indicator-item-sub li:hover a {
-    background-color: #f7f7f7;
-    color: black;
 }
 
 .image {
@@ -1410,55 +1369,21 @@ body {
 }
 .arrows {
     display: flex;
-    position: relative;
-}
-
-.arrows::before {
-    content: ' ';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    transform: translateX(-50%);
-}
-
-.arrows-item {
-    display: flex;
     justify-content: center;
+    padding-top: 15px;
     align-items: center;
-    width: 38px;
-    height: 38px;
     position: relative;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #ddd;
-    color: #ddd;
-    transition: all .4s;
-    margin-left: -1px;
+    width: 101%;
+    cursor: pointer;
 }
 
-.arrows-item:hover {
-    color: #1c51fa;
-    background-color: #1c51fa;
-    border-color: #1c51fa;
-}
 
-.arrows-item::before {
-    content: ' ';
-    background-image: url(이미지.png);
-    -webkit-backface-visibility: hidden;
-    background-repeat: no-repeat;
-    width: 10px;
-    height: 18px;
-    background-size: 49px 18px;
-}
 
-.arrows-item_prev::before { background-position: 0 0; }
-.arrows-item_next::before { background-position: -11px 0; }
+.arrows-item-prev::before { background-position: 0 0; }
+.arrows-item-next::before { background-position: -11px 0; }
 
-.arrows-item_prev:hover::before { background-position: -28px 0; }
-.arrows-item_next:hover::before { background-position: -39px 0; }
+.arrows-item-prev:hover::before { background-position: -28px 0; }
+.arrows-item-next:hover::before { background-position: -39px 0; }
 
 
 .button {
@@ -1645,14 +1570,14 @@ body {
 }
 
 .anchor-arrow {
-    background-color: #5a5a5a;
-    background-image: url(이미지.png);
-    -webkit-backface-visibility: hidden;
+    background-color: #2352A3;
+    background-image: url(../image/top-arrow.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 14px auto;
-    width: 48px;
-    height: 48px;
+    background-size: 25px auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
     pointer-events: auto;
 }
 
@@ -1843,8 +1768,8 @@ body {
 }
 
 .footer {
-    background-color: #333;
-    color: #999;
+    background-color: #2352A3;
+    color: #ffffff;
 }
 
 
@@ -2008,10 +1933,6 @@ body {
     font-size: 1.4rem;
 }
 
-:root[lang="ko-KR"] .footer-contact {
-    padding: 4px 0;
-}
-
 .form-contents {
     opacity: 0;
     transition: opacity 1s;
@@ -2043,10 +1964,6 @@ body {
     clear: both;
 }
 
-.footer-contact ul li strong,
-.footer-contact ul li span {
-}
-
 .footer-contact ul li strong {
     margin-right: 4px;
 }
@@ -2056,6 +1973,7 @@ body {
 }
 
 .footer-contact address {
+    padding-top: 7px;
     font-style: normal;
     line-height: 1.6;
     clear: both;
@@ -2242,13 +2160,8 @@ body {
     transition: background-position .4s;
 }
 
-
 .notification-list li a {
     display: block;
-}
-
-:root[lang="ko-KR"] .notification-check {
-    opacity: 1;
 }
 
 
@@ -2266,9 +2179,9 @@ body {
     display: block;
 }
 
-.name { font-weight: 700; fill: #1a202c; font-size: 14px; }
+.name { font-weight: 700; fill: #2352A3; font-size: 14px; }
 .role { fill: #718096; font-size: 12px; }
-.connector { fill: none; stroke: #cbd5e0; stroke-width: 2; stroke-linecap: round; }
+.connector { fill: none; stroke: #2352A3; stroke-width: 2; stroke-linecap: round; }
 
 
 .section {
@@ -2346,16 +2259,6 @@ body {
     color: #555;
     line-height: 1.76;
     font-size: 1.6rem;
-}
-
-.section-header-line {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.section-header-line-item {
-    margin-top: -3px;
 }
 
 .section-main {
@@ -2471,7 +2374,7 @@ body {
     display: inline-block;
     width: 40px;
     height: 10px;
-    background-image: url(/wp-content/themes/wizcore/statics/common/images/arrows-line-sprite-primary.png);
+    background-image: url(/images/arrows-line-sprite-primary.png);
     -webkit-backface-visibility: hidden;
     background-position: bottom;
     background-size: 40px 20px;
@@ -2479,6 +2382,65 @@ body {
     transition: all .4s;
 }
 
+.biz-card {
+    width: 90%; /* 모바일에서 좌우 여백 */
+    max-width: 400px; /* PC 최대 너비 */
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* 상단 컬러 바 */
+.biz-card-header {
+    height: 10px;
+    background: linear-gradient(90deg, #007bff, #00d4ff);
+}
+
+.biz-card-body {
+    padding: 30px;
+}
+
+.biz-profile {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.biz-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #2d3436;
+    margin: 0;
+}
+
+.biz-title {
+    font-size: 0.9rem;
+    color: #007bff;
+    font-weight: 600;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+/* 정보 리스트 스타일 */
+.biz-list {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.biz-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: #636e72;
+    text-decoration: none;
+}
+
+.biz-item span {
+    margin-right: 12px;
+    font-size: 1.1rem;
+}
 
 @media ( max-height: 540px ) {
     .cover_fullpage {
@@ -2501,7 +2463,7 @@ body {
         display: none;
     }
     .l_wrapper {
-        padding: 0 60px;
+        padding: 0 10px;
     }
     .org-wrapper {
         max-width: 1100px; /* 더 넓은 화면에서 여유롭게 배치 */
@@ -2560,10 +2522,7 @@ body {
     .cover-title p {
         font-size: 2rem;
     }
-    .arrows-item {
-        width: 46px;
-        height: 46px;
-    }
+
     .indicator-item {
         width: 220px;
     }
@@ -2760,11 +2719,6 @@ body {
         margin-top: 10px;
         margin-bottom: 22px;
     }
-
-    .section-header-line-item {
-        margin-top: -4px;
-    }
-
     .section-header h1 {
         font-size: 5.2rem;
     }
@@ -2863,7 +2817,7 @@ body {
         display: none;
     }
     .l_wrapper {
-        padding: 0 20px;
+        padding: 0 10px;
     }
 
     .org-wrapper {
@@ -2932,10 +2886,6 @@ body {
         width: 50%;
         position: static;
     }
-    .indicator-item-sub.is_active {
-        left: 0;
-        right: 0;
-    }
 
     .indicator-item_2 {
         width: 100%;
@@ -2949,10 +2899,6 @@ body {
         padding: 0 20px 0 10px; 
     }
 
-    .indicator-item_4 .indicator-item-sub li a {
-        padding: 10px; 
-    }
-
     .indicator-item button {
         height: 49px;
     }
@@ -2962,9 +2908,7 @@ body {
     .indicator-item_2 button::after {
         right: 20px;
     }
-    .indicator-item-sub {
-        top: 49px;
-    }
+
     .cover {
         max-height: 540px;
     }
@@ -3087,18 +3031,6 @@ body {
     .footer-contact {
         padding: 14px 0;
     }
-    .footer-contact ul li {
-        white-space: normal;
-        float: none;
-        display: inline-block;
-    }
-
-    .footer-contact address {
-        margin: 0 -10px;
-    }
-    .footer-contact li br {
-        display: inline; 
-    }
 
     .notification-header {
         height: 50px;
@@ -3129,10 +3061,6 @@ body {
         margin-bottom: 30px;
     }
 
-    .section-header-line-item {
-        margin-top: -6px;
-    }
-
     .section-header h1 {
         font-size: 3.6rem;
         margin-bottom: 34px;
@@ -3147,10 +3075,6 @@ body {
         font-size: 1.4rem;
         margin-bottom: 60px;
         margin-bottom: 0;
-    }
-
-    .section-header-line-item.button {
-        display: none;
     }
 
     .section-contents {
@@ -3201,4 +3125,7 @@ body {
         width: 50%;
         min-width: 160px;
     }
+
+    .biz-name { font-size: 1.2rem; }
+    .biz-card-body { padding: 20px; }
 }
