@@ -3,106 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VWorld Map - OpenLayers</title>
+    
+    <!-- OpenLayers CSS -->
+    <!-- 1. OpenLayers CSS (cdnjs로 변경) -->
+    <link rel="stylesheet" href="../css/ol.css">
+
+    <!-- 2. OpenLayers JS (cdnjs로 변경) -->
+    <script src="../js/ol.js"></script>
+    
     <style>
-        /* 기본 배경 설정 */
-        body {
+        body, html { margin: 0; padding: 0; overflow: hidden; }
+        #vmap { width: 100%; height: 91vh; background-color: #f8f9fa; }
+
+        /* 지도 타입 선택 버튼 스타일 */
+        .mapTypeWrapper {
+            position: absolute;
+            bottom: 45px;
+            left: 10px;
+            z-index: 9999;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f4f7f9;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            gap: 8px;
         }
 
-        /* 반응형 카드 컨테이너 */
-        .biz-card {
-            width: 90%; /* 모바일에서 좌우 여백 */
-            max-width: 400px; /* PC 최대 너비 */
+        .mapMeasureControlButton {
+            padding: 6px 12px;
             background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            border-radius: 6px;
+            font-family: sans-serif;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* 상단 컬러 바 */
-        .biz-card-header {
-            height: 10px;
-            background: linear-gradient(90deg, #007bff, #00d4ff);
-        }
+        .mapMeasureControlButton:hover { background-color: #f0f0f0; }
 
-        .biz-card-body {
-            padding: 30px;
-        }
-
-        .biz-profile {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .biz-name {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #2d3436;
-            margin: 0;
-        }
-
-        .biz-title {
-            font-size: 0.9rem;
-            color: #007bff;
-            font-weight: 600;
-            margin-top: 5px;
-            letter-spacing: 1px;
-        }
-
-        /* 정보 리스트 스타일 */
-        .biz-list {
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-
-        .biz-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            color: #636e72;
-            text-decoration: none;
-        }
-
-        .biz-item span {
-            margin-right: 12px;
-            font-size: 1.1rem;
-        }
-
-        /* 반응형 텍스트 조정 (작은 화면) */
-        @media (max-width: 320px) {
-            .biz-name { font-size: 1.2rem; }
-            .biz-card-body { padding: 20px; }
+        .mapMeasureControlButton.active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #0056b3;
         }
     </style>
 </head>
 <body>
 
-    <div class="biz-card">
-        <div class="biz-card-header"></div>
-        <div class="biz-card-body">
-            <div class="biz-profile">
-                <h1 class="biz-name">홍길동</h1>
-                <div class="biz-title">UX/UI DESIGNER</div>
-            </div>
-            
-            <div class="biz-list">
-                <a href="tel:01012345678" class="biz-item">
-                    <span>📱</span> 010-1234-5678
-                </a>
-                <a href="mailto:hello@brand.com" class="biz-item">
-                    <span>📧</span> hello@brand.com
-                </a>
-            </div>
+    <div class="g-search-result-area" style="position:relative;">
+        <!-- 지도 영역 -->
+        <div id="vmap"></div>
+
+        <!-- 지도 타입 선택 버튼 -->
+        <div class="mapTypeWrapper">
+            <div id="btn-base" class="mapMeasureControlButton active" onclick="onMapType('base')">일반</div>
+            <div id="btn-satellite" class="mapMeasureControlButton" onclick="onMapType('satellite')">위성</div>
+            <div id="btn-hybrid" class="mapMeasureControlButton" onclick="onMapType('hybrid')">Hybrid</div>
         </div>
     </div>
 
+    <!-- OpenLayers JS -->
+    <script>
+        // 전역 변수 설정
+        let map;
+        let tileLayer;
+        let currentMapType = 'base';
+
+        const mapUrls = {
+            base: 'http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png',
+            satellite: 'http://xdworld.vworld.kr:8080/2d/Satellite/service/{z}/{x}/{y}.jpeg', 
+            hybrid: 'http://xdworld.vworld.kr:8080/2d/Hybrid/service/{z}/{x}/{y}.png'
+        };
+
+
+
+        /**
+         * 지도 초기화 함수
+         */
+        function initMap() {
+            if (typeof ol === 'undefined') {
+                alert('OpenLayers 라이브러리가 로드되지 않았습니다.');
+                return;
+            }
+            // 서울 중심 좌표 변환 (EPSG:4326 -> EPSG:3857)
+            const center = ol.proj.fromLonLat([126.9518, 37.5414]);
+        
+            // 타일 레이어 생성
+            tileLayer = new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    url: mapUrls[currentMapType],
+                    maxZoom: 18,
+                    minZoom: 6
+                })
+            });
+
+            // 지도 객체 생성
+            map = new ol.Map({
+                target: 'vmap',
+                layers: [tileLayer],
+                view: new ol.View({
+                    center: center,
+                    zoom: 17
+                })
+            });
+        }
+
+        // 2. DOM과 라이브러리가 모두 준비된 후 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+        });
+
+        /**
+         * 지도 타입 변경 함수
+         */
+        function onMapType(type) {
+            currentMapType = type;
+
+            // 소스 교체
+            if (tileLayer) {
+                const newSource = new ol.source.XYZ({
+                    url: mapUrls[type],
+                    maxZoom: 18,
+                    minZoom: 6
+                });
+                tileLayer.setSource(newSource);
+            }
+
+            // UI 버튼 활성화 상태 변경
+            document.querySelectorAll('.mapMeasureControlButton').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`btn-${type}`).classList.add('active');
+        }
+    </script>
 </body>
 </html>

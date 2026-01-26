@@ -13,10 +13,12 @@
     <link rel="stylesheet" href="./css/common.css" type="text/css" media="all">
     <link rel="stylesheet" href="./css/slick.css" type="text/css" media="all">
     <link rel="stylesheet" href="./css/comsub.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./css/ol.css" type="text/css" media="all">
     <script type="text/javascript" src="./js/lazyload.min.js" id="vc-lazyload-js"></script>
     <script type="text/javascript" src="./js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="./js/slick.js" id="vc-slick-js"></script>
     <script type="text/javascript" src="./js/common.js" id="vc-common-js"></script>
+    <script type="text/javascript" src="./js/ol.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -28,10 +30,10 @@
         .section_gray {
             background: #f5f5f5;
         }
-        .l_wrapper {
+        /* .l_wrapper {
             max-width: 1200px;
             margin: 0 auto;
-        }
+        } */
 
         .gallery-list {
             margin: 0;
@@ -52,6 +54,42 @@
             text-align: center;
             text-decoration: none;
             color: #000;
+        }
+
+        #vmap { 
+            width: 100%; 
+            height: 55vh; 
+            background-color: #f8f9fa;
+            cursor: pointer; 
+        }
+
+        /* 지도 타입 선택 버튼 스타일 */
+        .mapTypeWrapper {
+            position: absolute;
+            bottom: 45px;
+            left: 10px;
+            z-index: 9999;
+            display: flex;
+            gap: 8px;
+        }
+
+        .mapMeasureControlButton {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            border-radius: 6px;
+            font-family: sans-serif;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .mapMeasureControlButton:hover { background-color: #f0f0f0; }
+
+        .mapMeasureControlButton.active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #0056b3;
         }
     </style>
 </head>
@@ -289,6 +327,12 @@
                 const html = await response.text();
                 contentArea.innerHTML = html;
 
+                if (pageName === 'tmap') {
+                    setTimeout(() => {
+                        initMap();
+                    }, 100);
+                }
+
                 if (typeof window.reinitPlugins === 'function') {
                     window.reinitPlugins();
                 }
@@ -327,9 +371,99 @@
                 contentArea.innerHTML = `<p style="color:red;">오류 발생: ${error}</p>`;
             }
         }
-
         // 첫 로딩 시 home.html 불러오기
         window.onload = () => loadTab('home');
+
+        // 전역 변수 설정
+        let map;
+        let tileLayer;
+        let currentMapType = 'base';
+
+        const mapUrls = {
+            base: 'http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png',
+            satellite: 'http://xdworld.vworld.kr:8080/2d/Satellite/service/{z}/{x}/{y}.jpeg', 
+            hybrid: 'http://xdworld.vworld.kr:8080/2d/Hybrid/service/{z}/{x}/{y}.png'
+        };
+
+        /**
+         * 지도 초기화 함수
+         */
+        function initMap() {
+            if (typeof ol === 'undefined') {
+                return;
+            }
+            // 서울 중심 좌표 변환 (EPSG:4326 -> EPSG:3857)
+            const lonLat = [126.6663273, 37.4988457];
+            const center = ol.proj.fromLonLat(lonLat);
+
+            // 타일 레이어 생성
+            tileLayer = new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    url: mapUrls[currentMapType],
+                    maxZoom: 18,
+                    minZoom: 6
+                })
+            });
+            
+            // 2. 마커(Feature) 생성
+            const marker = new ol.Feature({
+                geometry: new ol.geom.Point(center)
+            });
+            // 3. 마커 스타일 설정 (이미지/아이콘)
+            const markerStyle = new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [0.5, 1], // 아이콘 하단 중앙이 좌표에 오도록 설정
+                    src: './image/building.png', // 아이콘 이미지 URL
+                    scale: 1.0, // 이미지 크기 조절
+                    crossOrigin: 'anonymous' // CORS 문제 방지
+                }),
+                text: new ol.style.Text({
+                    text: '(주)솔리머',
+                    font: 'bold 14px Malgun Gothic, sans-serif',
+                    offsetY: -65, // 아이콘 위로 텍스트 위치 조절 (아이콘 크기에 따라 조정)
+                    fill: new ol.style.Fill({ color: '#000' }), // 글자색
+                    stroke: new ol.style.Stroke({ color: '#fff', width: 3 }), // 글자 테두리 (가독성용)
+                    textAlign: 'center'
+                })
+            });
+            marker.setStyle(markerStyle);
+
+            // 4. 벡터 소스 및 레이어 생성 (마커를 담는 레이어)
+            const vectorSource = new ol.source.Vector({ features: [marker] });
+            const vectorLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+
+            // 지도 객체 생성
+            map = new ol.Map({
+                target: 'vmap',
+                layers: [tileLayer, vectorLayer],
+                view: new ol.View({
+                    center: center,
+                    zoom: 17
+                })
+            });
+        }
+
+        function onMapType(type) {
+            currentMapType = type;
+
+            // 소스 교체
+            if (tileLayer) {
+                const newSource = new ol.source.XYZ({
+                    url: mapUrls[type],
+                    maxZoom: 18,
+                    minZoom: 6
+                });
+                tileLayer.setSource(newSource);
+            }
+
+            // UI 버튼 활성화 상태 변경
+            document.querySelectorAll('.mapMeasureControlButton').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`btn-${type}`).classList.add('active');
+        }
     </script>
 </body>
 </html>

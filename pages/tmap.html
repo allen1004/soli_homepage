@@ -1,5 +1,5 @@
     <section class="cover">
-        <div class="cover-background lazy lazy-loaded" data-ll-status="loaded" style="background-image: url(cover-1.png);"></div>
+        <div class="cover-background lazy lazy-loaded" data-ll-status="loaded" style="background-image: url('');"></div>
         <div class="cover-inside">
             <div class="l_wrapper">
                 <div class="cover-title">
@@ -43,15 +43,25 @@
                 <div class="showcase">
                     <div class="showcase-title">
                         <h1>찾아오시는길</h1>
-                        <p>
+                        <P><i class="bi bi-geo-alt"></i> <span style="padding-left: 6px;">인천광역시 서구 건지로 98-79, 3층(가좌동)</span></P>
+                    </div>
+                    <div class="g-search-result-area" style="position:relative;">
+                        <!-- 지도 영역 -->
+                        <div id="vmap"></div>
 
-                        </p>
+                        <!-- 지도 타입 선택 버튼 -->
+                        <div class="mapTypeWrapper">
+                            <div id="btn-base" class="mapMeasureControlButton active" onclick="onMapType('base')">일반</div>
+                            <div id="btn-satellite" class="mapMeasureControlButton" onclick="onMapType('satellite')">위성</div>
+                            <div id="btn-hybrid" class="mapMeasureControlButton" onclick="onMapType('hybrid')">Hybrid</div>
+                        </div>
                     </div>
                 </div>
                 <div style="padding-bottom: 50px">
                 </div>
-
             </div>
         </div>
         <!--anchor clip end -->
     </div>
+
+
