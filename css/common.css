@@ -34,6 +34,7 @@ img {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     vertical-align: top;
+    object-fit: cover;
 }
 
 a {
@@ -1344,20 +1345,23 @@ body {
 .arrows {
     display: flex;
     justify-content: center;
-    padding-top: 15px;
+    padding-top: 0px;
     align-items: center;
     position: relative;
-    width: 101%;
+    width: 100%;
     cursor: pointer;
 }
 
+.arrows-item-prev, .arrows-item-next {
+    display: inline-block !important; /* 혹은 block */
+    cursor: pointer;
+}
 
-
-.arrows-item-prev::before { background-position: 0 0; }
+/* .arrows-item-prev::before { background-position: 0 0; }
 .arrows-item-next::before { background-position: -11px 0; }
 
 .arrows-item-prev:hover::before { background-position: -28px 0; }
-.arrows-item-next:hover::before { background-position: -39px 0; }
+.arrows-item-next:hover::before { background-position: -39px 0; } */
 
 
 .button {
@@ -1673,7 +1677,7 @@ body {
     flex-direction: row-reverse;
 }
 
-.booth-grid_arrow .booth-grid-item::after {
+/* .booth-grid_arrow .booth-grid-item::after {
     content: ' ';
     width: 24px;
     height: 7px;
@@ -1683,7 +1687,7 @@ body {
     background-size: 24px 7px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-}
+} */
 
 .booth-grid_arrow_reverse .booth-grid-item:first-child::after,
 .booth-grid_arrow .booth-grid-item:last-child::after {
@@ -2315,11 +2319,11 @@ body {
     width: 160px;
     height: 160px;
     display: inline-block;
-    margin-bottom: 28px;
+    margin-bottom: 10px;
     position: relative;
 }
 
-.solution-item-cover::after {
+/* .solution-item-cover::after {
     content: ' ';
     position: absolute;
     left: 0;
@@ -2330,7 +2334,7 @@ body {
     border: 2px solid #ddd;
     opacity: 0;
     transition: all .4s;
-}
+} */
 
 .solution-item:hover::after,
 .solution-item:hover .solution-item-cover::after {
@@ -2348,8 +2352,6 @@ body {
     display: inline-block;
     width: 40px;
     height: 10px;
-    background-image: url(/images/arrows-line-sprite-primary.png);
-    -webkit-backface-visibility: hidden;
     background-position: bottom;
     background-size: 40px 20px;
     opacity: 0;

@@ -337,33 +337,35 @@
                     window.reinitPlugins();
                 }
 
-                if ($('.gallery-list').length > 0) {
-                    if ($('.gallery-list').hasClass('slick-initialized')) {
-                        $('.gallery-list').slick('unslick');
-                    }
+                const $galleryLists = $('.gallery-list, .gallery-list-01');
 
-                    $('.gallery-list').slick({
-                        slidesToShow: 2,
-                        slidesToScroll: 1,
-                        arrows: true,
-                        dots: false,
-                        infinite: true,
-
-                        autoplay: true,          // 자동 재생 활성화
-                        autoplaySpeed: 3000,     // 5000ms = 5초마다 실행
-                        pauseOnHover: true,     // 마우스 올렸을 때 멈춤 방지 (선택 사항)
-
-                        prevArrow: $('.arrows-item-prev'),
-                        nextArrow: $('.arrows-item-next'),
-
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToShow: 1
+                if ($galleryLists.length > 0) {
+                    $galleryLists.each(function() {
+                        const $this = $(this);
+                        if ($this.hasClass('slick-initialized')) {
+                            $this.slick('unslick');
+                        }
+                        $this.slick({
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            dots: false,
+                            infinite: true,
+                            autoplay: true,
+                            autoplaySpeed: 3000,
+                            pauseOnHover: true,
+                            // 주의: 화살표가 공통이라면 두 슬라이더가 동시에 움직일 수 있음
+                            prevArrow: $('.arrows-item-prev'), 
+                            nextArrow: $('.arrows-item-next'),
+                            responsive: [
+                                {
+                                    breakpoint: 768,
+                                    settings: {
+                                        slidesToShow: 1
+                                    }
                                 }
-                            }
-                        ]
+                            ]
+                        });
                     });
                 }
                 window.scrollTo(0, 0);
@@ -373,6 +375,9 @@
         }
         // 첫 로딩 시 home.html 불러오기
         window.onload = () => loadTab('home');
+
+
+
 
         // 전역 변수 설정
         let map;
@@ -393,7 +398,7 @@
                 return;
             }
             // 서울 중심 좌표 변환 (EPSG:4326 -> EPSG:3857)
-            const lonLat = [126.6663273, 37.4988457];
+            const lonLat = [126.654838, 37.496254]; 
             const center = ol.proj.fromLonLat(lonLat);
 
             // 타일 레이어 생성
@@ -463,6 +468,40 @@
                 btn.classList.remove('active');
             });
             document.getElementById(`btn-${type}`).classList.add('active');
+        }
+
+
+        function goSystem(obj) {
+            var $targetSlider = $('.gallery-list.slick-initialized, .gallery-list-01.slick-initialized');
+
+            var slickState = $targetSlider.slick('getSlick');
+
+            if ($('.gallery-list .slick-list').hasClass('dragging')) {
+                return;
+            }
+            
+            if (slickState.dragging || slickState.animating) {
+                return false;
+            }
+
+            var goUrl = "http://www.newfocus-lab.com/f/?systemId="+obj;
+            window.open(goUrl, '_blank');
+        }
+
+        function goWmsDemo() {
+            var $targetSlider = $('.gallery-list.slick-initialized, .gallery-list-01.slick-initialized');
+
+            var slickState = $targetSlider.slick('getSlick');
+
+            if ($('.gallery-list .slick-list').hasClass('dragging')) {
+                return;
+            }
+            
+            if (slickState.dragging || slickState.animating) {
+                return false;
+            }
+            
+            window.open(`http://www.newfocus-lab.com/demow/`, '_blank');
         }
     </script>
 </body>

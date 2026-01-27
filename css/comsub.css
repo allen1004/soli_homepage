@@ -186,7 +186,7 @@
 }
 
 .showcase-title {
-    margin-bottom: 54px;
+    margin-bottom: 20px;
 }
 
 .showcase-title h1 {
@@ -258,7 +258,6 @@
 
 .gallery-item {
     flex-shrink: 0;
-    padding: 0 15px;
     box-sizing: border-box;
 }
 
@@ -274,58 +273,52 @@
     text-align: center;
     background-color: white;
     cursor: pointer;
-    height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
     transition: box-shadow .4s;
-    overflow: hidden;
 }
 
 .gallery-box-overlay {
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 100%;
     width: 100%;
     z-index: 1;
     transition: all .4s;
-    transform: translateY(-50%);
     opacity: 0;
 }
 
 .gallery-box-cover {
-    padding-top: 57.1428571428%;
     position: relative;
-    overflow: hidden;
 }
 
 .gallery-box-cover img {
-    position: absolute;
     left: 0;
     top: 0;
     z-index: 10;
 }
 
-.gallery-box:hover {
+/* .gallery-box:hover {
     box-shadow: 0 15px 20px rgba(0,0,0,0.3);
-}
+} */
 
 .gallery-box:hover .gallery-box-overlay {
     opacity: 1;
 }
 
 .gallery-box:hover .gallery-box-cover img {
-    transform: translateY(-50%);
+    transform: translateY(-5%);
 }
 
-.gallery-box:hover .gallery-arrow {
+/* .gallery-box:hover .gallery-arrow {
     background-position: left bottom;
-}
+} */
 
 .gallery-box-contents {
     border-top: 1px solid #eee;
     padding: 39px 0 14px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .gallery-box-contents h2 {
@@ -352,7 +345,6 @@
     margin: auto auto 20px;
     width: 40px;
     height: 10px;
-    background-image: url(/wp-content/themes/wizcore/statics/common/images/arrows-line-sprite.png);
     background-size: 40px 20px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
