@@ -30,16 +30,9 @@
         .section_gray {
             background: #f5f5f5;
         }
-        /* .l_wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-        } */
-
         .gallery-list {
             margin: 0;
         }
-
-        /* slick 기본 요구사항 */
         .slick-slide {
             padding: 0 10px;
         }
@@ -517,6 +510,18 @@
             }
             
             window.open(`http://www.newfocus-lab.com/demow/`, '_blank');
+        }
+
+        function changeImage(thumbnail) {
+            document.getElementById('mainImage').src = thumbnail.src;
+            document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        function changeImage1(thumbnail) {
+            document.getElementById('mainImage1').src = thumbnail.src;
+            document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
+            thumbnail.classList.add('active');
         }
     </script>
 </body>
