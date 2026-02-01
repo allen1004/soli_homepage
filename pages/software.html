@@ -1,5 +1,5 @@
     <section class="cover">
-        <div class="cover-background lazy lazy-loaded" data-ll-status="loaded" style="background-image: url(../image/bg_solution.png);"></div>
+        <div class="cover-background" style="background-image: url('../image/bg_solution.png');"></div>
         <div class="cover-inside">
             <div class="l_wrapper">
                 <div class="cover-title">
@@ -52,101 +52,93 @@
 
                     <div class="section-contents">
                         <div class="gallery is_init">
-                            <div class="gallery-list">
-                                
-                                <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" role="tabpanel" id="slick-slide" style="width: 399px;">
-                                    <div>
-                                        <div class="gallery-item" style="width: 100%; display: inline-block;">
-                                            <a class="gallery-box" href="javascript:void(0);" tabindex="0" onclick="goSystem('tms');">
-                                                <div class="gallery-box-cover">
-                                                    <img src="../image/tms.png" alt="">
-                                                </div>
-                                                <div class="gallery-box-contents">
-                                                    <h2>운송관리</h2>
-                                                    <p>실시간 모니터링 및 타시스템 연계를 통한 공급망 효율화를 극대화합니다.</p>
-                                                </div>
-                                                <span class="gallery-arrow"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slick-slide" data-slick-index="1" aria-hidden="true" tabindex="1" role="tabpanel" id="slick-slide1" style="width: 399px;">
-                                    <div>
-                                        <div class="gallery-item" style="width: 100%; display: inline-block;">
-                                            <a class="gallery-box" href="javascript:void(0);" tabindex="1" onclick="goSystem('wms');">
-                                                <div class="gallery-box-cover">
-                                                    <img src="../image/wms.png" alt="">
-                                                </div>
-                                                <div class="gallery-box-contents">
-                                                    <h2>창고관리</h2>
-                                                    <p>전략 기반의 입 · 출고 관리를 통한 재고 정확도 향상 및 비용을 절감합니다.</p>
-                                                </div>
-                                                <span class="gallery-arrow"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slick-slide" data-slick-index="2" aria-hidden="true" tabindex="2" role="tabpanel" id="slick-slide2" style="width: 399px;">
-                                    <div>
-                                        <div class="gallery-item" style="width: 100%; display: inline-block;">
-                                            <a class="gallery-box" href="javascript:void(0);" tabindex="2" onclick="goSystem('srm');">
-                                                <div class="gallery-box-cover">
-                                                    <img src="../image/srm.png" alt="">
-                                                </div>
-                                                <div class="gallery-box-contents">
-                                                    <h2>협력사관리</h2>
-                                                    <p>성과 분석 기반의 안정적이고 투명한 조달 체계 구축합니다.</p>
-                                                </div>
-                                                <span class="gallery-arrow"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slick-slide" data-slick-index="3" aria-hidden="true" tabindex="3" role="tabpanel" id="slick-slide3" style="width: 399px;">
-                                    <div>
-                                        <div class="gallery-item" style="width: 100%; display: inline-block;">
-                                            <a class="gallery-box" href="javascript:void(0);" tabindex="3" onclick="goSystem('crm');">
-                                                <div class="gallery-box-cover">
-                                                    <img src="../image/crm.png" alt="">
-                                                </div>
-                                                <div class="gallery-box-contents">
-                                                    <h2>고객관리</h2>
-                                                    <p>데이터 기반 고객 관리 및 자동화 기능을 통한 맞춤형 서비스를 제공합니다.</p>
-                                                </div>
-                                                <span class="gallery-arrow"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="4" role="tabpanel" id="slick-slide4" style="width: 399px;">
-                                    <div>
-                                        <div class="gallery-item" style="width: 100%; display: inline-block;">
-                                            <a class="gallery-box" href="javascript:void(0);" tabindex="4" onclick="goSystem('mes');">
-                                                <div class="gallery-box-cover">
-                                                    <img src="../image/mes.png" alt="">
-                                                </div>
-                                                <div class="gallery-box-contents">
-                                                    <h2>생산관리</h2>
-                                                    <p>실시간 현황 모니터링 및 지속적 개선을 통한 생산성을 향상시킵니다.</p>
-                                                </div>
-                                                <span class="gallery-arrow"></span>
-                                            </a>
-                                        </div>
-                                    </div>
+                            <div id="it" class="arrows">
+                                <div>
+                                    <img class="arrows-item-prev" style="width: 20px; height: 20px; padding-right: 5px;" src="../image/left.png">
+                                    <img class="arrows-item-next" style="width: 20px; height: 20px;"  src="../image/right.png">
                                 </div>
                             </div>
-                            <div id="it" class="arrows">
-                                <div><img class="arrows-item-prev" style="width: 20px; height: 20px; padding-right: 5px;" src="../image/left.png">
-                                <img class="arrows-item-next" style="width: 20px; height: 20px;"  src="../image/right.png"></div>
+                            <div class="gallery-list">
+                                
+                                <div class="item">
+                                    <div class="gallery-item">
+                                        <a class="gallery-box" href="javascript:void(0);" tabindex="0" onclick="goSystem('tms');">
+                                            <div class="gallery-box-cover">
+                                                <img src="../image/tms.png" alt="">
+                                            </div>
+                                            <div class="gallery-box-contents">
+                                                <h2>운송관리</h2>
+                                                <p>실시간 모니터링 및 타시스템 연계를 통한 공급망 효율화를 극대화합니다.</p>
+                                            </div>
+                                            <span class="gallery-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="gallery-item">
+                                        <a class="gallery-box" href="javascript:void(0);" tabindex="1" onclick="goSystem('wms');">
+                                            <div class="gallery-box-cover">
+                                                <img src="../image/wms.png" alt="">
+                                            </div>
+                                            <div class="gallery-box-contents">
+                                                <h2>창고관리</h2>
+                                                <p>전략 기반의 입 · 출고 관리를 통한 재고 정확도 향상 및 비용을 절감합니다.</p>
+                                            </div>
+                                            <span class="gallery-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                <div class="item">
+                                    <div class="gallery-item">
+                                        <a class="gallery-box" href="javascript:void(0);" tabindex="2" onclick="goSystem('srm');">
+                                            <div class="gallery-box-cover">
+                                                <img src="../image/srm.png" alt="">
+                                            </div>
+                                            <div class="gallery-box-contents">
+                                                <h2>협력사관리</h2>
+                                                <p>성과 분석 기반의 안정적이고 투명한 조달 체계 구축합니다.</p>
+                                            </div>
+                                            <span class="gallery-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="gallery-item">
+                                        <a class="gallery-box" href="javascript:void(0);" tabindex="3" onclick="goSystem('crm');">
+                                            <div class="gallery-box-cover">
+                                                <img src="../image/crm.png" alt="">
+                                            </div>
+                                            <div class="gallery-box-contents">
+                                                <h2>고객관리</h2>
+                                                <p>데이터 기반 고객 관리 및 자동화 기능을 통한 맞춤형 서비스를 제공합니다.</p>
+                                            </div>
+                                            <span class="gallery-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="gallery-item">
+                                        <a class="gallery-box" href="javascript:void(0);" tabindex="4" onclick="goSystem('mes');">
+                                            <div class="gallery-box-cover">
+                                                <img src="../image/mes.png" alt="">
+                                            </div>
+                                            <div class="gallery-box-contents">
+                                                <h2>생산관리</h2>
+                                                <p>실시간 현황 모니터링 및 지속적 개선을 통한 생산성을 향상시킵니다.</p>
+                                            </div>
+                                            <span class="gallery-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </div>
-                <div style="padding-bottom: 50px">
                 </div>
                 
                 <div class="showcase">

@@ -352,7 +352,7 @@
                             dots: false,
                             infinite: true,
                             autoplay: true,
-                            autoplaySpeed: 3000,
+                            autoplaySpeed: 2000,
                             pauseOnHover: true,
                             // 주의: 화살표가 공통이라면 두 슬라이더가 동시에 움직일 수 있음
                             prevArrow: $('.arrows-item-prev'), 
@@ -470,6 +470,21 @@
             document.getElementById(`btn-${type}`).classList.add('active');
         }
 
+        function goLink(obj, e) {
+            var $targetSlider = $('.gallery-list.slick-initialized, .gallery-list-01.slick-initialized');
+
+            var slickState = $targetSlider.slick('getSlick');
+
+            if ($('.gallery-list .slick-list').hasClass('dragging')) {
+                return;
+            }
+            
+            if (slickState.dragging || slickState.animating) {
+                return false;
+            }
+
+            loadTab(obj, e);
+        }
 
         function goSystem(obj) {
             var $targetSlider = $('.gallery-list.slick-initialized, .gallery-list-01.slick-initialized');

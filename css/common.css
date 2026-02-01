@@ -101,9 +101,9 @@ button:focus {
     outline: 0;
 }
 
-.slick-slide {
+/* .slick-slide {
     outline: none;
-} 
+}  */
 
 .aligncenter {
     display: block;
@@ -476,7 +476,7 @@ body {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url(이미지.png);
+    /* background-image: url(이미지.png); */
     -webkit-backface-visibility: hidden;
     background-size: 8px 9px;
     width: 8px;
@@ -821,7 +821,7 @@ body {
     top: 14px;
     width: 10px;
     height: 10px;
-    background-image: url(이미지.png);
+    /* background-image: url(이미지.png); */
     -webkit-backface-visibility: hidden;
     background-size: 20px 21px;
 }
@@ -918,7 +918,7 @@ body {
     width: 8px;
     height: 4px;
     margin-right: 10px;
-    background-image: url(이미지.png);
+    /* background-image: url(이미지.png); */
     -webkit-backface-visibility: hidden;
 }
 
@@ -1260,7 +1260,7 @@ body {
 }
 
 .product-contact {
-    background-image: url(이미지.png);
+    /* background-image: url(이미지.png); */
     background-position: center;
     background-size: cover;
     color: white;
@@ -1445,7 +1445,7 @@ body {
     bottom: 0;
     background-color: #1c51fa;
     opacity: 0;
-    background-image: url(이미지.png);
+    /* background-image: url(이미지.png); */
     -webkit-backface-visibility: hidden;
     background-repeat: no-repeat;
     background-size: 40px 10px;
@@ -2045,9 +2045,9 @@ body {
     transition: opacity .4s;
 }
 
-.notification-dots li.slick-active button::after {
+/* .notification-dots li.slick-active button::after {
     opacity: 1;
-}
+} */
 
 .notification-inside {
 }
@@ -2078,7 +2078,7 @@ body {
 .notification-close {
     width: 20px;
     height: 20px;
-    background-image: url(이미지.png);
+    /* background-image: url(이미지.png); */
     background-size: 20px 20px;
     text-indent: -9999px;
     flex-shrink: 0;
@@ -2131,7 +2131,7 @@ body {
     height: 16px;
     border: 1px solid white;
     box-sizing: border-box;
-    background-image: url(이미지.png);
+    /* background-image: url(이미지.png); */
     background-size: 12px 8px;
     background-position: center -24px;
     background-repeat: no-repeat;
@@ -2259,7 +2259,7 @@ body {
 .solution {
     text-align: center;
     font-size: 1.6rem;
-    padding: 88px 0 57px;
+    padding: 0px;
 }
 
 .solution-list {
@@ -2269,7 +2269,6 @@ body {
     align-items: center;
     flex-wrap: wrap;
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: -37px;
     margin-left: -20px;
     margin-right: -20px;
 }
@@ -2307,7 +2306,7 @@ body {
 
 .solution-contents {
     max-width: 600px;
-    margin: 0 auto -35px auto;
+    margin: 0 auto 0px auto;
 }
 
 .solution-item {
